@@ -4,7 +4,6 @@ const db = require('./db');
 const app = express();
 app.use(express.json());
 
-const PORT = 3000;
 
 app.get('/users', (req, res) => {
   const { search = '', sort = 'id', order = 'asc' } = req.query;
@@ -80,8 +79,9 @@ app.delete('/users/:id', (req, res) => {
   });
 });
 
+const PORT = process.env.PORT || 3000;
 
-app.listen(3000, () => {
-  console.log('Server running at http://localhost:3000');
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
 });
 
